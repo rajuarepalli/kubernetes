@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: n2-nginx
+    labels: 
+        deploy: nginxdeply
+spec:
+    replicas: 3
+    selector:
+            matchLabels:
+                    app: nginxpod
+    template:
+        metadata:
+            name: n2-nginx
+            labels: 
+                app: nginxpod
+        spec:
+            containers:
+                - name: nginx-container
+                  image: nginx
+                  ports:
+                    - containerPort: 80        
